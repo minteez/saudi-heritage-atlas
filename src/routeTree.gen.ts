@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SourcesRouteImport } from './routes/sources'
+import { Route as ArticlesSlugRouteImport } from './routes/articles/$slug'
+import { Route as CollectionsIndexRouteImport } from './routes/collections/index'
+import { Route as ProvincesIndexRouteImport } from './routes/provinces/index'
+import { Route as ProvincesSlugRouteImport } from './routes/provinces/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+  id: '/articles/$slug',
+  path: '/articles/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvincesIndexRoute = ProvincesIndexRouteImport.update({
+  id: '/provinces/',
+  path: '/provinces/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvincesSlugRoute = ProvincesSlugRouteImport.update({
+  id: '/provinces/$slug',
+  path: '/provinces/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/history': typeof HistoryRoute
+  '/map': typeof MapRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
+  '/provinces/$slug': typeof ProvincesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/provinces/': typeof ProvincesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/history': typeof HistoryRoute
+  '/map': typeof MapRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
+  '/provinces/$slug': typeof ProvincesSlugRoute
+  '/collections': typeof CollectionsIndexRoute
+  '/provinces': typeof ProvincesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/history': typeof HistoryRoute
+  '/map': typeof MapRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/articles/$slug': typeof ArticlesSlugRoute
+  '/provinces/$slug': typeof ProvincesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/provinces/': typeof ProvincesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/history'
+    | '/map'
+    | '/search'
+    | '/sources'
+    | '/articles/$slug'
+    | '/provinces/$slug'
+    | '/collections/'
+    | '/provinces/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/history'
+    | '/map'
+    | '/search'
+    | '/sources'
+    | '/articles/$slug'
+    | '/provinces/$slug'
+    | '/collections'
+    | '/provinces'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/history'
+    | '/map'
+    | '/search'
+    | '/sources'
+    | '/articles/$slug'
+    | '/provinces/$slug'
+    | '/collections/'
+    | '/provinces/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  HistoryRoute: typeof HistoryRoute
+  MapRoute: typeof MapRoute
+  SearchRoute: typeof SearchRoute
+  SourcesRoute: typeof SourcesRoute
+  ArticlesSlugRoute: typeof ArticlesSlugRoute
+  ProvincesSlugRoute: typeof ProvincesSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+  ProvincesIndexRoute: typeof ProvincesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/$slug': {
+      id: '/articles/$slug'
+      path: '/articles/$slug'
+      fullPath: '/articles/$slug'
+      preLoaderRoute: typeof ArticlesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/provinces/': {
+      id: '/provinces/'
+      path: '/provinces'
+      fullPath: '/provinces/'
+      preLoaderRoute: typeof ProvincesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/provinces/$slug': {
+      id: '/provinces/$slug'
+      path: '/provinces/$slug'
+      fullPath: '/provinces/$slug'
+      preLoaderRoute: typeof ProvincesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  HistoryRoute: HistoryRoute,
+  MapRoute: MapRoute,
+  SearchRoute: SearchRoute,
+  SourcesRoute: SourcesRoute,
+  ArticlesSlugRoute: ArticlesSlugRoute,
+  ProvincesSlugRoute: ProvincesSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+  ProvincesIndexRoute: ProvincesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
