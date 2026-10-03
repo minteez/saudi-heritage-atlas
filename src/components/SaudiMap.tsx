@@ -27,10 +27,10 @@ export function SaudiMap({ compact = false }: { compact?: boolean }) {
           <text x={80} y={560} className="fill-sea/60 text-[18px] italic" transform="rotate(-55 80 560)">Red Sea</text>
           <text x={850} y={250} className="fill-sea/60 text-[18px] italic">Arabian Gulf</text>
           <path d={path} className="fill-secondary stroke-foreground/50" strokeWidth={1.5} />
-          {active.routes && routes.map((r) => (
+          {active["routes"] && routes.map((r) => (
             <polyline key={r.id} points={r.points.map((p) => project(...p).join(",")).join(" ")} className="fill-none stroke-primary/70" strokeWidth={2} strokeDasharray="6 6" />
           ))}
-          {active.provinces && provinces.map((p) => {
+          {active["provinces"] && provinces.map((p) => {
             const [x, y] = project(p.lon, p.lat);
             return (
               <Link key={p.slug} to="/provinces/$slug" params={{ slug: p.slug }}>
