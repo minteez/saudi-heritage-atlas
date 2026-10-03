@@ -109,4 +109,4 @@ export const sources: Record<string, Source> = {
   },
 };
 
-export const getSources = (ids: string[]) => ids.map((i) => sources[i]).filter(Boolean);
+export const getSources = (ids: string[]) => ids.map((i) => sources[i]).filter((s): s is Source => !!s);
