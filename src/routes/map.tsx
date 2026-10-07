@@ -8,6 +8,8 @@ export const Route = createFileRoute("/map")({
     { name: "description", content: "Explore Saudi cities, archaeological sites, heritage sites and historic routes on a layered map." },
     { property: "og:title", content: "Interactive Map — Saudi Heritage Atlas" },
     { property: "og:description", content: "Layered map of Saudi cities, archaeology and heritage." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: () => (
     <>

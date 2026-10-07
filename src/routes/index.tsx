@@ -17,6 +17,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "An interactive atlas, timeline and museum of Saudi Arabia's history, regions, architecture and heritage." },
       { property: "og:title", content: "Saudi Heritage Atlas" },
       { property: "og:description", content: "An interactive atlas, timeline and museum of Saudi Arabia's history and heritage." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,

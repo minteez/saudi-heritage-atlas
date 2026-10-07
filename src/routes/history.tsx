@@ -8,6 +8,8 @@ export const Route = createFileRoute("/history")({
     { name: "description", content: "A sourced timeline of Arabian and Saudi history from prehistory to the modern Kingdom." },
     { property: "og:title", content: "History Timeline — Saudi Heritage Atlas" },
     { property: "og:description", content: "A sourced timeline of Arabian and Saudi history." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: () => (
     <>

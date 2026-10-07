@@ -9,6 +9,8 @@ export const Route = createFileRoute("/sources")({
     { name: "description", content: "The sources, evidence labels and research methodology behind the Saudi Heritage Atlas." },
     { property: "og:title", content: "Sources & Methodology — Saudi Heritage Atlas" },
     { property: "og:description", content: "Sources and methodology behind the atlas." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: () => (
     <>

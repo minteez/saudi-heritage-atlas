@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Article sections accept either one paragraph or a paragraph list so long-form entries remain readable without embedding markup in data.
