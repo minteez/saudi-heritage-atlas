@@ -8,6 +8,8 @@ export const Route = createFileRoute("/provinces/")({
     { name: "description", content: "Explore the thirteen administrative regions of Saudi Arabia and their landscapes and heritage." },
     { property: "og:title", content: "The 13 Provinces — Saudi Heritage Atlas" },
     { property: "og:description", content: "The thirteen regions of Saudi Arabia." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: () => (
     <>

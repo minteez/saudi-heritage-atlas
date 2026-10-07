@@ -14,6 +14,8 @@ export const Route = createFileRoute("/provinces/$slug")({
     { name: "description", content: loaderData.overview },
     { property: "og:title", content: `${loaderData.name} — Saudi Heritage Atlas` },
     { property: "og:description", content: loaderData.overview },
+    { property: "og:type", content: "article" },
+    { name: "twitter:card", content: "summary" },
   ] : [{ title: "Not found" }] }),
   component: Province,
 });

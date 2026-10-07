@@ -8,6 +8,8 @@ export const Route = createFileRoute("/about")({
     { name: "description", content: "About the Saudi Heritage Atlas and its developer, Minteez." },
     { property: "og:title", content: "About — Saudi Heritage Atlas" },
     { property: "og:description", content: "About the atlas and its developer." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: () => (
     <>

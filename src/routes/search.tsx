@@ -13,6 +13,8 @@ export const Route = createFileRoute("/search")({
     { name: "description", content: "Search places, people, events and collections in the Saudi Heritage Atlas." },
     { property: "og:title", content: "Search — Saudi Heritage Atlas" },
     { property: "og:description", content: "Search the Saudi Heritage Atlas." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
   ] }),
   component: SearchPage,
 });
