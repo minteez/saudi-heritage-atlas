@@ -14,6 +14,8 @@ export const Route = createFileRoute("/articles/$slug")({
     { name: "description", content: loaderData.lede },
     { property: "og:title", content: loaderData.title },
     { property: "og:description", content: loaderData.lede },
+    { property: "og:type", content: "article" },
+    { name: "twitter:card", content: "summary_large_image" },
   ] : [{ title: "Not found" }] }),
   component: ArticlePage,
 });
@@ -29,7 +31,17 @@ function ArticlePage() {
       </figure>
       <div className="mx-auto grid max-w-5xl gap-12 px-5 py-12 md:grid-cols-[1fr_240px]">
         <div className="space-y-8 text-lg leading-relaxed">
-          {a.sections.map((s) => (<section key={s.heading}><h2 className="text-3xl">{s.heading}</h2><p className="mt-3">{s.body}</p></section>))}
+          {a.sections.map((s) => {
+            const paragraphs = Array.isArray(s.body) ? s.body : [s.body];
+            return (
+              <section key={s.heading}>
+                <h2 className="text-3xl">{s.heading}</h2>
+                <div className="mt-3 space-y-4">
+                  {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+              </section>
+            );
+          })}
           <SourceList ids={a.sources} />
         </div>
         <aside className="h-fit border border-border bg-card p-5 text-sm">
