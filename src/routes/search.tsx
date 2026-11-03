@@ -5,6 +5,7 @@ import { articles } from "@/data/articles";
 import { provinces } from "@/data/provinces";
 import { events } from "@/data/timeline";
 import { collections } from "@/data/collections";
+import { getCollectionPage } from "@/data/collection-pages";
 
 export const Route = createFileRoute("/search")({
   validateSearch: (s) => z.object({ q: z.string().optional().default("") }).parse(s),
@@ -27,7 +28,10 @@ function SearchPage() {
     ...articles.filter((a) => m(a.title + a.lede + a.titleAr)).map((a) => ({ k: "Article", t: a.title, link: <Link to="/articles/$slug" params={{ slug: a.slug }}>{a.title}</Link> })),
     ...provinces.filter((p) => m(p.name + p.nameAr + p.overview + p.capital)).map((p) => ({ k: "Province", t: p.name, link: <Link to="/provinces/$slug" params={{ slug: p.slug }}>{p.name}</Link> })),
     ...events.filter((e) => m(e.title + e.summary + e.date)).map((e) => ({ k: "Event · " + e.date, t: e.title, link: <Link to="/history" hash={e.id}>{e.title}</Link> })),
-    ...collections.filter((c) => m(c.name + c.intro + c.planned.join(" "))).map((c) => ({ k: "Collection", t: c.name, link: <Link to="/collections" hash={c.slug}>{c.name}</Link> })),
+    ...collections.filter((c) => {
+      const page = getCollectionPage(c.slug);
+      return m(c.name + c.nameAr + c.intro + c.planned.join(" ") + (page?.sections.map((s) => s.title + s.body.join(" ")).join(" ") ?? ""));
+    }).map((c) => ({ k: "Collection", t: c.name, link: getCollectionPage(c.slug) ? <Link to="/collections/$slug" params={{ slug: c.slug }}>{c.name}</Link> : <Link to="/collections" hash={c.slug}>{c.name}</Link> })),
   ];
   return (
     <>

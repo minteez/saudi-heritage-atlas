@@ -9,6 +9,10 @@ import { SaudiMap } from "@/components/SaudiMap";
 import { Timeline } from "@/components/Timeline";
 import { provinces } from "@/data/provinces";
 import { articles } from "@/data/articles";
+import { collectionPages } from "@/data/collection-pages";
+import { getCollection } from "@/data/collections";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,7 +92,17 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 pb-10">
+      <section className="border-y border-border bg-card">
+        <div className="mx-auto max-w-7xl px-5 py-16">
+          <div className="flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow">Living heritage</p><h2 className="mt-3 text-4xl md:text-5xl">Objects, rituals, regional voices</h2></div><Button asChild variant="link" className="px-0"><Link to="/collections">All collections<ArrowRight /></Link></Button></div>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {collectionPages.filter((page) => ["food", "arts-crafts", "music-dance", "clothing"].includes(page.slug)).map((page) => <Link key={page.slug} to="/collections/$slug" params={{ slug: page.slug }} className="group"><img src={page.image} alt={page.imageAlt} width={1536} height={1024} loading="lazy" className="aspect-[4/3] w-full object-cover" /><h3 className="mt-4 text-2xl group-hover:text-primary">{getCollection(page.slug)?.name}</h3><p className="mt-2 text-sm text-muted-foreground">{page.subtitle}</p></Link>)}
+          </div>
+          <p className="mt-6 text-xs text-muted-foreground">Illustrative images, AI-generated. Not documentary photographs.</p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 pb-10 pt-16">
         <p className="eyebrow">Thirteen provinces</p>
         <div className="mt-6 grid grid-cols-2 gap-px border border-border bg-border md:grid-cols-4">
           {provinces.map((p) => (
