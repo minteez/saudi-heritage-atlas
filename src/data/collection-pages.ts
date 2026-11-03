@@ -141,21 +141,21 @@ export const collectionPages: CollectionPage[] = [
     slug: "clothing", image: dress, imageAlt: "Illustrative bisht with gold edging, white thobe and folded checkered headscarf",
     subtitle: "Dress as material knowledge, occasion and regional identity.",
     evidence: "Material culture · Living heritage · Interpretive overview",
-    provinces: ["riyadh", "asir"], related: ["arts-crafts", "music-dance", "architecture"],
+    provinces: ["eastern", "qassim", "riyadh"], related: ["arts-crafts", "music-dance", "architecture"],
     sections: [
-      { id: "context", title: "Beyond a single national costume", sources: ["heritage", "unesco-ardah"], body: [
-        "A clothing collection needs more than a familiar silhouette. Occasion, region, material and the person wearing a garment all affect its meaning. Present-day dress should not automatically be used to reconstruct clothing in another century.",
-        "Performance offers a documented example of this context. In Najdi Ardah, costumes belong to an ensemble of poetry, movement and drumming. Their significance comes partly from the occasion and activity in which they are worn."
+      { id: "context", title: "The bisht: cloth, craft and occasion", sources: ["bisht-inventory"], body: [
+        "The Saudi national inventory describes the bisht as a men's cloak worn over regular attire, including the thobe. The garment combines cloth, sewing and embroidery, making the skill of its makers part of its cultural significance.",
+        "The inventory distinguishes summer and winter bishts by fabric and weight. A familiar outline can therefore conceal meaningful differences in material and use. Present-day examples should not automatically be used to reconstruct dress in another century."
       ] },
-      { id: "work", title: "The work behind the garment", sources: ["unesco-ardah", "unesco-sadu"], body: [
-        "UNESCO's Ardah account notes women's role in costume-making. This shifts attention from the public performer to the preparation and skilled work that make the performance possible.",
-        "Al Sadu provides a parallel example of textile knowledge: natural fibres, weaving and geometric pattern-making sustained by practitioners. It is a distinct weaving tradition, not a claim that all Saudi garments are made from Al Sadu textiles."
+      { id: "work", title: "Hofuf and the work behind the garment", sources: ["bisht-inventory", "unesco-ardah"], body: [
+        "The national inventory identifies Hofuf in the Eastern Province as a centre of bisht weaving, sewing and embroidery. It also names Al-Qassim, Hail and Taif, showing that this craft has a wider geography than one town alone.",
+        "Performance dress offers another view of skilled work. UNESCO's Najdi Ardah account notes women's role in costume-making. Attention to these makers gives a fuller account than focusing only on the people who wear the finished garments in public."
       ] },
-      { id: "provenance", title: "Reading an object carefully", sources: ["heritage"], body: [
+      { id: "provenance", title: "Reading an object carefully", sources: ["bisht-inventory"], body: [
         "A garment is most informative when its provenance is known. Maker, place, date, fabric, repairs and use can distinguish everyday clothing from ceremonial wear or a contemporary recreation.",
         "The illustration above presents familiar garment forms, not a dated museum object. It cannot establish regional provenance, historical authenticity or the exact construction of a surviving piece. Those claims require object-specific documentation."
       ] },
-      { id: "identity", title: "Living identity and changing use", sources: ["unesco-ardah", "heritage"], body: [
+      { id: "identity", title: "Living identity and changing use", sources: ["unesco-ardah", "bisht-inventory"], body: [
         "Dress can express belonging without being uniform. An account of clothing should leave room for regional differences, family choices and changes in the circumstances of daily life.",
         "Separating documented performance costume, collected objects and present-day practice keeps the collection open to richer regional accounts. The aim is not to define one correct appearance, but to understand the knowledge and relationships carried by clothing."
       ] },

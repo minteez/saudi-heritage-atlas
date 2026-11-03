@@ -16,6 +16,37 @@ export interface Source {
 }
 
 export const sources: Record<string, Source> = {
+  "unesco-coffee": {
+    id: "unesco-coffee", title: "Arabic coffee, a symbol of generosity",
+    publisher: "UNESCO Intangible Cultural Heritage", type: "UNESCO",
+    url: "https://ich.unesco.org/en/RL/arabic-coffee-a-symbol-of-generosity-02111",
+  },
+  "unesco-qatt": {
+    id: "unesco-qatt", title: "Al-Qatt Al-Asiri, female traditional interior wall decoration in Asir, Saudi Arabia",
+    publisher: "UNESCO Intangible Cultural Heritage", type: "UNESCO",
+    url: "https://ich.unesco.org/en/RL/al-qatt-al-asiri-female-traditional-interior-wall-decoration-in-asir-saudi-arabia-01261",
+  },
+  "unesco-sadu": {
+    id: "unesco-sadu", title: "Traditional weaving of Al Sadu",
+    publisher: "UNESCO Intangible Cultural Heritage", type: "UNESCO",
+    url: "https://ich.unesco.org/en/RL/traditional-weaving-of-al-sadu-02158",
+  },
+  "unesco-ardah": {
+    id: "unesco-ardah", title: "Alardah Alnajdiyah, dance, drumming and poetry in Saudi Arabia",
+    publisher: "UNESCO Intangible Cultural Heritage", type: "UNESCO",
+    url: "https://ich.unesco.org/en/RL/alardah-alnajdiyah-dance-drumming-and-poetry-in-saudi-arabia-01196",
+  },
+  "unesco-date-palm": {
+    id: "unesco-date-palm", title: "Date palm, knowledge, skills, traditions and practices",
+    publisher: "UNESCO Intangible Cultural Heritage", type: "UNESCO",
+    url: "https://ich.unesco.org/en/RL/date-palm-knowledge-skills-traditions-and-practices-01902",
+  },
+  "bisht-inventory": {
+    id: "bisht-inventory", title: "Knowledge and practices associated with the traditional craft of Bisht",
+    publisher: "Saudi national inventory, hosted by UNESCO", type: "Government",
+    url: "https://ich.unesco.org/doc/download.php?versionID=77383",
+    note: "National inventory documentation; not, by itself, a claim of UNESCO inscription.",
+  },
   "unesco-hegra": {
     id: "unesco-hegra",
     title: "Hegra Archaeological Site (al-Hijr / Madâin Sâlih)",
