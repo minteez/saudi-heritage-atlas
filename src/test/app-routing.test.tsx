@@ -14,4 +14,9 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it.each(["archaeology", "architecture", "food", "music-dance", "arts-crafts", "clothing"])("matches the collection reading route for %s", (slug) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes(`/collections/${slug}`).at(-1)?.routeId).toBe("/collections/$slug");
+  });
 });

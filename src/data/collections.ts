@@ -1,3 +1,5 @@
+import { getCollectionPage } from "./collection-pages";
+
 export interface Collection {
   slug: string;
   name: string;
@@ -30,3 +32,12 @@ export const collections: Collection[] = [
 ];
 
 export const getCollection = (slug: string) => collections.find((c) => c.slug === slug);
+
+// A collection is published only when it has a complete reading page.
+for (const collection of collections) {
+  const page = getCollectionPage(collection.slug);
+  if (page) {
+    collection.status = "published";
+    collection.sources = [...new Set(page.sections.flatMap((section) => section.sources))];
+  }
+}

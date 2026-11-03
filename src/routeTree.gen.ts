@@ -17,6 +17,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as ArticlesSlugRouteImport } from './routes/articles/$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections/index'
+import { Route as CollectionsSlugRouteImport } from './routes/collections/$slug'
 import { Route as ProvincesIndexRouteImport } from './routes/provinces/index'
 import { Route as ProvincesSlugRouteImport } from './routes/provinces/$slug'
 
@@ -60,6 +61,11 @@ const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
   path: '/collections/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProvincesIndexRoute = ProvincesIndexRouteImport.update({
   id: '/provinces/',
   path: '/provinces/',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/sources': typeof SourcesRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/provinces/$slug': typeof ProvincesSlugRoute
   '/collections/': typeof CollectionsIndexRoute
   '/provinces/': typeof ProvincesIndexRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/sources': typeof SourcesRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/provinces/$slug': typeof ProvincesSlugRoute
   '/collections': typeof CollectionsIndexRoute
   '/provinces': typeof ProvincesIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/sources': typeof SourcesRoute
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/provinces/$slug': typeof ProvincesSlugRoute
   '/collections/': typeof CollectionsIndexRoute
   '/provinces/': typeof ProvincesIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/sources'
     | '/articles/$slug'
+    | '/collections/$slug'
     | '/provinces/$slug'
     | '/collections/'
     | '/provinces/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/sources'
     | '/articles/$slug'
+    | '/collections/$slug'
     | '/provinces/$slug'
     | '/collections'
     | '/provinces'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/sources'
     | '/articles/$slug'
+    | '/collections/$slug'
     | '/provinces/$slug'
     | '/collections/'
     | '/provinces/'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   SourcesRoute: typeof SourcesRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   ProvincesSlugRoute: typeof ProvincesSlugRoute
   CollectionsIndexRoute: typeof CollectionsIndexRoute
   ProvincesIndexRoute: typeof ProvincesIndexRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/provinces/': {
       id: '/provinces/'
       path: '/provinces'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   SourcesRoute: SourcesRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   ProvincesSlugRoute: ProvincesSlugRoute,
   CollectionsIndexRoute: CollectionsIndexRoute,
   ProvincesIndexRoute: ProvincesIndexRoute,

@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Article sections accept either one paragraph or a paragraph list so long-form entries remain readable without embedding markup in data.
+- Collection reading pages use a shared dynamic route and a separate typed content catalog; publish a collection only when that catalog contains its sourced reading page, keeping directory and search links consistent.
