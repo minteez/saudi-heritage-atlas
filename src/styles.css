@@ -106,3 +106,9 @@
 
 @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+
+.sha-map { background: var(--secondary); font-family: var(--font-sans); }
+.sha-map .leaflet-tile-pane { filter: sepia(0.45) saturate(0.8) hue-rotate(-8deg) brightness(0.98); }
+.sha-map .leaflet-tooltip { background: var(--card); color: var(--foreground); border: 1px solid var(--border); border-radius: 0; box-shadow: none; font-size: 12px; }
+.sha-map .leaflet-control-zoom a { background: var(--card); color: var(--foreground); border-radius: 0 !important; }
+.sha-diamond { display: block; width: 10px; height: 10px; transform: rotate(45deg); background: var(--accent); border: 1px solid var(--background); }
