@@ -11,7 +11,7 @@ const colors: Record<string, string> = {
   provinces: "var(--accent)",
 };
 
-const cssVar = (v: string) => {
+const cssVar = (v: string = "var(--primary)") => {
   const name = v.slice(4, -1);
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#8a5a3c";
 };
