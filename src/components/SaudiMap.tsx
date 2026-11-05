@@ -1,7 +1,8 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { outline, places, project, routes, W, H, type Layer } from "@/data/places";
-import { provinces } from "@/data/provinces";
+import { ClientOnly, Link, useNavigate } from "@tanstack/react-router";
+import { lazy, Suspense, useState } from "react";
+import { places, type Layer } from "@/data/places";
+
+const LeafletCanvas = lazy(() => import("./LeafletCanvas"));
 import { useLang } from "@/lib/i18n";
 
 const layerMeta: Record<Layer | "provinces", { label: string; cls: string }> = {
@@ -16,44 +17,18 @@ export function SaudiMap({ compact = false }: { compact?: boolean }) {
   const { lang } = useLang();
   const [active, setActive] = useState<Record<string, boolean>>({ provinces: false, cities: true, archaeology: true, heritage: true, routes: false });
   const [sel, setSel] = useState<string | null>("diriyah");
-  const path = outline.map((p, i) => `${i ? "L" : "M"}${project(...p).join(",")}`).join(" ") + " Z";
+  const navigate = useNavigate();
   const selected = places.find((p) => p.id === sel);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
-      <div className="relative border border-border bg-card pattern-bg">
-        <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label="Schematic map of Saudi Arabia">
-          <rect width={W} height={H} className="fill-transparent" />
-          <text x={80} y={560} className="fill-sea/60 text-[18px] italic" transform="rotate(-55 80 560)">Red Sea</text>
-          <text x={850} y={250} className="fill-sea/60 text-[18px] italic">Arabian Gulf</text>
-          <path d={path} className="fill-secondary stroke-foreground/50" strokeWidth={1.5} />
-          {active["routes"] && routes.map((r) => (
-            <polyline key={r.id} points={r.points.map((p) => project(...p).join(",")).join(" ")} className="fill-none stroke-primary/70" strokeWidth={2} strokeDasharray="6 6" />
-          ))}
-          {active["provinces"] && provinces.map((p) => {
-            const [x, y] = project(p.lon, p.lat);
-            return (
-              <Link key={p.slug} to="/provinces/$slug" params={{ slug: p.slug }}>
-                <g className="cursor-pointer">
-                  <rect x={x - 5} y={y - 5} width={10} height={10} transform={`rotate(45 ${x} ${y})`} className="fill-accent" />
-                  <text x={x + 10} y={y - 8} className="fill-accent text-[14px]">{lang === "ar" ? p.nameAr : p.name}</text>
-                </g>
-              </Link>
-            );
-          })}
-          {places.filter((p) => active[p.layer]).map((p) => {
-            const [x, y] = project(p.lon, p.lat);
-            const on = sel === p.id;
-            return (
-              <g key={p.id} className="cursor-pointer" onClick={() => setSel(p.id)}>
-                <circle cx={x} cy={y} r={on ? 11 : 6} className={`${layerMeta[p.layer].cls} transition-all`} opacity={on ? 0.25 : 0} />
-                <circle cx={x} cy={y} r={5} className={layerMeta[p.layer].cls} />
-                {!compact && <text x={x + 9} y={y + 4} className="fill-foreground text-[13px]">{lang === "ar" ? p.nameAr : p.name}</text>}
-              </g>
-            );
-          })}
-        </svg>
-        <p className="absolute bottom-2 start-3 text-[10px] text-muted-foreground">Schematic map — boundaries approximate</p>
+      <div className="relative overflow-hidden border border-border bg-card">
+        <ClientOnly fallback={<div className="h-[520px] lg:h-[640px]" />}>
+          <Suspense fallback={<div className="h-[520px] lg:h-[640px]" />}>
+            <LeafletCanvas active={active} sel={sel} lang={lang} onSelect={setSel} onProvince={(slug) => navigate({ to: "/provinces/$slug", params: { slug } })} />
+          </Suspense>
+        </ClientOnly>
+        <p className="pointer-events-none absolute bottom-2 start-3 z-[500] text-[10px] text-muted-foreground">Click a marker to explore · scroll-zoom after clicking the map</p>
       </div>
       <aside className="space-y-6">
         <div>
