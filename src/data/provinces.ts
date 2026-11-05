@@ -23,7 +23,7 @@ export const provinces: Province[] = [
     overview:
       "Home to the national capital and to Diriyah, seat of the First Saudi State. The region's Najdi mud-brick tradition shaped the architecture of central Arabia.",
     highlights: ["At-Turaif, Diriyah", "Masmak Fortress", "Wadi Hanifah", "Tuwaiq escarpment"],
-    sources: ["unesco-diriyah", "darah"],
+    sources: ["unesco-ardah", "unesco-diriyah", "darah"],
   },
   {
     slug: "makkah",
@@ -49,7 +49,7 @@ export const provinces: Province[] = [
     overview:
       "Centred on the city of the Prophet's Mosque. The region also includes AlUla, with the ancient kingdoms of Dadan and Lihyan and Nabataean Hegra.",
     highlights: ["Al-Masjid An-Nabawi", "Hegra, AlUla", "Dadan", "Harrat Khaybar"],
-    sources: ["unesco-hegra"],
+    sources: ["unesco-date-palm", "unesco-hegra"],
   },
   {
     slug: "eastern",
@@ -62,7 +62,7 @@ export const provinces: Province[] = [
     overview:
       "The largest province by area, with an ancient Gulf maritime culture, the Al-Ahsa oasis, and the oil fields that changed the modern economy.",
     highlights: ["Al-Ahsa Oasis", "Tarut Island", "Dammam No. 7", "Pearling heritage"],
-    sources: ["unesco-ahsa", "aramcoworld"],
+    sources: ["bisht-inventory", "unesco-ahsa", "aramcoworld"],
   },
   {
     slug: "qassim",
@@ -87,7 +87,7 @@ export const provinces: Province[] = [
     overview:
       "A mountainous region with stone and mud towers and the colourful Al-Qatt Al-Asiri wall painting tradition, practised by women.",
     highlights: ["Rijal Alma", "Al-Qatt Al-Asiri", "Sarawat terraces"],
-    sources: ["heritage"],
+    sources: ["unesco-qatt", "heritage"],
   },
   {
     slug: "tabuk",
@@ -171,7 +171,7 @@ export const provinces: Province[] = [
     landscape: "Northern basin, olive groves, Nefud margins",
     overview: "Home to Dumat al-Jandal, an ancient oasis town at the junction of routes between Arabia, Syria and Iraq.",
     highlights: ["Dumat al-Jandal", "Marid Castle", "Rajajil standing stones"],
-    sources: ["heritage"],
+    sources: ["unesco-sadu", "heritage"],
   },
 ];
 
