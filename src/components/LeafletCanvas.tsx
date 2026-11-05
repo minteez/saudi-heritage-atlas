@@ -11,6 +11,11 @@ const colors: Record<string, string> = {
   provinces: "var(--accent)",
 };
 
+const cssVar = (v: string) => {
+  const name = v.slice(4, -1);
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#8a5a3c";
+};
+
 interface Props {
   active: Record<string, boolean>;
   sel: string | null;
@@ -55,7 +60,7 @@ export default function LeafletCanvas({ active, sel, lang, onSelect, onProvince 
     if (active["routes"]) {
       routes.forEach((r) => {
         L.polyline(r.points.map(([lon, lat]) => [lat, lon] as [number, number]), {
-          color: "var(--primary)", weight: 2.5, dashArray: "6 8", opacity: 0.8,
+          color: cssVar("var(--primary)"), weight: 2.5, dashArray: "6 8", opacity: 0.8,
         }).bindTooltip(r.name, { sticky: true }).addTo(g);
       });
     }
@@ -73,9 +78,9 @@ export default function LeafletCanvas({ active, sel, lang, onSelect, onProvince 
       const on = p.id === sel;
       L.circleMarker([p.lat, p.lon], {
         radius: on ? 9 : 6,
-        color: on ? "var(--background)" : colors[p.layer],
+        color: cssVar(on ? "var(--background)" : colors[p.layer]),
         weight: on ? 3 : 1,
-        fillColor: colors[p.layer],
+        fillColor: cssVar(colors[p.layer]),
         fillOpacity: 0.95,
       })
         .bindTooltip(lang === "ar" ? p.nameAr : p.name, { direction: "top", offset: [0, -6] })
