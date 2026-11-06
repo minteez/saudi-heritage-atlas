@@ -112,3 +112,8 @@
 .sha-map .leaflet-tooltip { background: var(--card); color: var(--foreground); border: 1px solid var(--border); border-radius: 0; box-shadow: none; font-size: 12px; }
 .sha-map .leaflet-control-zoom a { background: var(--card); color: var(--foreground); border-radius: 0 !important; }
 .sha-diamond { display: block; width: 10px; height: 10px; transform: rotate(45deg); background: var(--accent); border: 1px solid var(--background); }
+
+/* Hide Lovable watermark badge */
+#lovable-badge {
+  display: none !important;
+}
