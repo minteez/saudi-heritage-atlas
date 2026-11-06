@@ -1,3 +1,4 @@
+import { extraCollectionPages } from "./collection-pages-extra";
 import hegra from "@/assets/hero-hegra.jpg";
 import jeddah from "@/assets/hero-jeddah.jpg";
 import coffee from "@/assets/collection-coffee.jpg";
@@ -162,5 +163,7 @@ export const collectionPages: CollectionPage[] = [
     ],
   },
 ];
+
+collectionPages.push(...extraCollectionPages);
 
 export const getCollectionPage = (slug: string) => collectionPages.find((page) => page.slug === slug);
