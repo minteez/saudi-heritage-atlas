@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { collections } from "@/data/collections";
 import { getArticle } from "@/data/articles";
 import { getCollectionPage } from "@/data/collection-pages";
+import { collectionImages } from "@/data/collection-images";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/collections/")({
       <div className="mx-auto max-w-7xl space-y-px px-5 py-12">
         {collections.map((c) => {
           const page = getCollectionPage(c.slug);
+          const cover = collectionImages[c.slug];
           return (
           <section key={c.slug} id={c.slug} className="grid gap-4 border-b border-border py-8 md:grid-cols-[280px_1fr]">
             <div>
@@ -30,6 +32,12 @@ export const Route = createFileRoute("/collections/")({
             </div>
             <div>
               {page && <Link to="/collections/$slug" params={{ slug: c.slug }}><img src={page.image} alt={page.imageAlt} width={1536} height={1024} loading="lazy" className="mb-5 aspect-[21/9] w-full object-cover" /></Link>}
+              {!page && cover && (
+                <figure className="mb-5">
+                  <img src={cover.src} alt={cover.alt} width={1536} height={768} loading="lazy" className="aspect-[21/9] w-full object-cover" />
+                  <figcaption className="mt-2 text-xs text-muted-foreground">Illustrative image, AI-generated. Not a documentary photograph.</figcaption>
+                </figure>
+              )}
               <p>{c.intro}</p>
               {page ? <Button asChild variant="link" className="mt-3 px-0"><Link to="/collections/$slug" params={{ slug: c.slug }}>Explore {c.name}<ArrowRight /></Link></Button> : <p className="mt-3 text-sm text-muted-foreground">Planned: {c.planned.join(" · ")}</p>}
               <div className="mt-3 flex flex-wrap gap-4 text-sm">
