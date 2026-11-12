@@ -18,14 +18,15 @@ export const isLoc = (value: unknown): value is Loc =>
 
 /** Resolve a bilingual value for a language. Falls back to English when the
  *  Arabic side is missing, and warns in development so the gap is visible. */
-export function pick<T, A>(value: Loc<T, A> | T, lang: Lang): T | A {
-  if (!isLoc(value)) return value as T;
-  const out = value[lang];
-  if (out === undefined || out === null || (typeof out === "string" && out.trim() === "")) {
-    if (import.meta.env?.DEV) console.warn(`[i18n] missing "${lang}" text, falling back to en:`, value.en);
-    return value.en;
+export function pick<T = string, A = T>(value: Loc<T, A> | T, lang: Lang): T | A {
+  if (!isLoc(value)) return value as T | A;
+  const record = value as Loc<T, A>;
+  const chosen = record[lang];
+  if (chosen === undefined || chosen === null || (typeof chosen === "string" && chosen.trim() === "")) {
+    if (import.meta.env?.DEV) console.warn(`[i18n] missing "${lang}" text, falling back to en:`, record.en);
+    return record.en as T | A;
   }
-  return out;
+  return chosen as T | A;
 }
 
 /** True when a string contains at least one Arabic letter. Used by the

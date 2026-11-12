@@ -14,7 +14,7 @@ export type { UIKey };
 const DICTS: Record<Lang, Record<UIKey, string>> = { en, ar };
 
 /** Static routes and their document-title keys; dynamic routes are resolved below. */
-const DOC_KEYS: Record<string, UIKey> = {
+const DOC_KEYS: Record<string, string> = {
   "/": "doc.home",
   "/history": "doc.history",
   "/map": "doc.map",
@@ -30,7 +30,7 @@ const DOC_KEYS: Record<string, UIKey> = {
  * English for crawlers and first paint; this keeps the tab and the social
  * preview honest once the reader switches language.
  */
-function documentMeta(pathname: string, lang: Lang) {
+function documentMeta(pathname: string, lang: Lang): { title: string; description: string } | null {
   const suffix = DICTS[lang]["doc.suffix"];
   const staticKey = DOC_KEYS[pathname];
   if (staticKey) {
