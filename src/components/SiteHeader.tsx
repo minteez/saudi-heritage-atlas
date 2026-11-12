@@ -31,9 +31,6 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 py-3">
         <Link to="/" className="flex items-center gap-3">
-          <span className="grid h-9 w-9 place-items-center rotate-45 border border-primary">
-            <span className="-rotate-45 font-display text-sm text-primary">SA</span>
-          </span>
           <span className="font-display text-lg leading-none">{t("title")}</span>
         </Link>
         <nav className="ms-auto hidden items-center gap-5 text-sm lg:flex">
